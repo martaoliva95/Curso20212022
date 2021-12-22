@@ -1,0 +1,7 @@
+select ?municipio ?municipioLabel ?lonlat ?codipostal ?website where {
+       ?municipio wdt:P131 wd:Q12600.
+       ?municipio wdt:P625 ?lonlat.
+       ?municipio wdt:P281 ?codipostal.
+       ?municipio wdt:P856 ?website.          
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "ca". }
+     }
