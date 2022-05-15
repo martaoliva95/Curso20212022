@@ -1,1 +1,1 @@
-Esta carpeta contiene el dataser empleado para el trabajo.
+Esta carpeta contiene el dataset empleado para el trabajo.
