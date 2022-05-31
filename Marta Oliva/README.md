@@ -33,20 +33,32 @@ A continuación, debemos elegir el dominio que utilizaremos para las URIs, la ru
 -	Patrón para individuos: http://ejemplo-empadronados.es/CM/municipio/edad
 
 ### d) Desarrollo del vocabulario
+Para las relaciones entre columnas, se ha partido de la columna de *municipio_nombre* que es el nombre de un municipio de la Comunidad de Madrid. A partir de esta columna, se han ido relacionando el resto de campos del dataset.
+![](Captura6.JPG)
+
+En la figura del apartado siguiente, se observa el "RDF skeleton" que incluye las relaciones establecidas con los vocabularios, ontologias y propiedades empleadas.
 
 ### e) Proceso de transformación de los datos
 El proceso de transformación de los datos adapta los datos inicales para una posterior transformación a datos enlazados en RDF. Para este proceso, he usado la herramienta OpenRefine con la extensión RDF. Las acciones que se han realizado son las siguientes:
-- Eliminación de datos innecesarios. Se elimina la columna *municipio_codigo* porque representa lo mismo que la columna *municipio_nombre* y se toma la decisión de que esta columna es irrelevante.
+
 - Transformación de columnas numéricas. Se transforma la columna *poblacion_empadronada* a numérica. 
 - Eliminación de carácteres. En la fase de mapeo, las columnas *municipio_nombre* y *rango_edad* se crean con carácteres erroneos. Por tanto se utilizan expresiones GREL para sustituir esos carácteres por un guión.
+![](Captura.JPG)
+![](Captura5.JPG)
+
 - Creación esquema RDF. 
+![](Captura4.JPG)
 
 ### f) Enlazado
 Se decide realizar la reconciliación solo de la columna *municipio_nombre* ya que el resto de columnas no sugieren información muy precisa. Al realizar esta reconciliación con Wikidata España, nos sugiere reconciliar nuestra columna *municipio_nombre* con *Municipios de España*. Si realizo la reconciliación se asocian todos ellos salvo cinco municipios, los cuales decido asociar manualmente.
+![](Captura3.JPG)
+![](Captura2.JPG)
 
 ### g) Publicación
+Por falta de una mayor aplicación y explotación de los datos, se decide no publicarlos por el momento.
 
 ## 3. Aplicación y explotación
+Para realizar la explotación de los datos se decide utilizar la plataforma Eclipse, que es un IDE de Java, utilizando Jena para realizar las consultas SPARQL.
 
 ## 4. Conclusiones
 
