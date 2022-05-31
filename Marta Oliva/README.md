@@ -59,9 +59,22 @@ Por falta de una mayor aplicación y explotación de los datos, se decide no pub
 
 ## 3. Aplicación y explotación
 Para realizar la explotación de los datos se decide utilizar la plataforma Eclipse, que es un IDE de Java, utilizando Jena para realizar las consultas SPARQL.
+- Ejemplo 1: Mostrar el municipio con código 903
+```ruby
+queryString =
+				"PREFIX ontologia: <" + ontologia + "> " +
+				"SELECT ?municipio_codigo " +
+				"WHERE { ?municipio_codigo ontologia:hasCode '903'.} ";
+```
+Como resultado obtenemos la URI con código de municipio 903 -> http://ejemplo-empadronados.es/CM/municipio/municipio/Tres-Cantos
 
 ## 4. Conclusiones
+En la realización de este proyecto me he dado cuenta de la utilidad que tiene la Web Semántica y los datos enlazados. La utilización de datos enlazados nos permite una mayor precisión en la búsqueda de datos lo que equivale a mayor rapidez y calidad en éstos. En mi opinión, es un campo bastante interesante pero que requiere de conocimiento y experiencia para llegar a analizar y generar datos más complejos. Concretamente, en mi dataset me habría gustado poder realizar más pruebas y haberlo enfocado de diferentes maneras, pero la falta de experiencia y tiempo me lo han impedido. Aún así, me ha gustado la asignatura y espero poder seguir aprendiendo. 
 
 ## 5. Bibliografía
  - https://datos.gob.es/es/catalogo/a13002908-residentes-en-la-comunidad-de-madrid-por-rango-de-edad1
+ - https://openrefine.org/
+ - https://www.w3.org/TR/turtle/
+ - http://loopasam.github.io/jena-doc/tutorials/using_jena_with_eclipse_pt.html
+ - https://docs.stardog.com/tutorials/learn-sparql
  
