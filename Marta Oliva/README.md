@@ -34,7 +34,7 @@ A continuación, debemos elegir el dominio que utilizaremos para las URIs, la ru
 
 ### d) Desarrollo del vocabulario
 Para las relaciones entre columnas, se ha partido de la columna de *municipio_nombre* que es el nombre de un municipio de la Comunidad de Madrid. A partir de esta columna, se han ido relacionando el resto de campos del dataset.
-![](Captura6.JPG)
+![](Vocabularios/Captura6.JPG)
 
 En la figura del apartado siguiente, se observa el "RDF skeleton" que incluye las relaciones establecidas con los vocabularios, ontologias y propiedades empleadas.
 
@@ -47,7 +47,7 @@ El proceso de transformación de los datos adapta los datos inicales para una po
 ![](Captura5.JPG)
 
 - Creación esquema RDF. 
-![](Captura4.JPG)
+![](Vocabularios/Captura4.JPG)
 
 ### f) Enlazado
 Se decide realizar la reconciliación solo de la columna *municipio_nombre* ya que el resto de columnas no sugieren información muy precisa. Al realizar esta reconciliación con Wikidata España, nos sugiere reconciliar nuestra columna *municipio_nombre* con *Municipios de España*. Si realizo la reconciliación se asocian todos ellos salvo cinco municipios, los cuales decido asociar manualmente.
