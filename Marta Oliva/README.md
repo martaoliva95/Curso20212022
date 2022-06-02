@@ -114,7 +114,6 @@ El municipio Tres-Cantos tiene 1425 personas empadronadas en el municipio/De-20-
 El municipio Tres-Cantos tiene 1752 personas empadronadas en el municipio/De-35-a-39-años .
 El municipio Tres-Cantos tiene 357 personas empadronadas en el municipio/De-75-a-79-años .
 El municipio Tres-Cantos tiene 1407 personas empadronadas en el municipio/De-60-a-64-años .
-```
 
 ## 4. Conclusiones
 En la realización de este proyecto me he dado cuenta de la utilidad que tiene la Web Semántica y los datos enlazados. La utilización de datos enlazados nos permite una mayor precisión en la búsqueda de datos lo que equivale a mayor rapidez y calidad en éstos. En mi opinión, es un campo bastante interesante pero que requiere de conocimiento y experiencia para llegar a analizar y generar datos más complejos. Concretamente, en mi dataset me habría gustado poder realizar más pruebas y haberlo enfocado de diferentes maneras, pero la falta de experiencia y tiempo me lo han impedido. Aún así, me ha gustado la asignatura y espero poder seguir aprendiendo. 
