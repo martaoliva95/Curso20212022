@@ -33,7 +33,7 @@ public class main {
 		// Archivo de datos
 		String filename = "cm-csv.ttl";
 		
-		// Creaci髇 de un modelo vac韔
+		// Creaci贸n de un modelo vac铆o
 		Model model = ModelFactory.createDefaultModel();
 		
 		// Uso de Filemanager para localizar el archivo de entrada
@@ -42,7 +42,7 @@ public class main {
 		if (in == null)
 			throw new IllegalArgumentException("File: "+filename+" not found");
 
-		// Lectura del archivo en la serializaci髇 'TTL'
+		// Lectura del archivo en la serializaci贸n 'TTL'
 		model.read(in, null, "TTL");
 		
 		// Variables a usar
@@ -51,10 +51,10 @@ public class main {
 		QueryExecution qexec;
 		ResultSet results;
 		
-		// CASOS DE APLICACI覰
-		// Query 1: Mostrar el municipio con c骴igo 903
+		// CASOS DE APLICACI脫N
+		// Query 1: Mostrar el municipio con c贸digo 903
 		
-		System.out.println("Caso 1: Municipio de la Comunidad de Madrid con c骴igo 903\n");
+		System.out.println("Caso 1: Municipio de la Comunidad de Madrid con c贸digo 903\n");
 		queryString =
 				"PREFIX ontologia: <" + ontologia + "> " +
 				"SELECT ?municipio_codigo " +
@@ -69,6 +69,76 @@ public class main {
 			QuerySolution binding = results.nextSolution();
 			Resource resource = (Resource) binding.get("municipio_codigo");
 			System.out.printf(resource.getURI());
+		}
+		
+		// Query 2: N煤mero de mujeres de 0 a 4 a帽os en municipio con c贸digo 903
+		System.out.println("\n\nCaso 2: N煤mero de mujeres de 0 a 4 a帽os en municipio con c贸digo 903. \n");
+		queryString =
+				"PREFIX ontologia: <" + ontologia + "> " +
+						"SELECT ?Subject ?municipio_codigo ?poblacion_empadronada " +
+						"WHERE { ?Subject ontologia:hasGender 'Mujer'. " +
+						"?Subject ontologia:hasRange 'municipio/De-0-a-4-a帽os'. " +
+						"?municipio_codigo ontologia:hasAgeGender ?Subject. " +
+						"?municipio_codigo ontologia:hasCode '903'. " +
+						"?Subject ontologia:hasPopulation ?poblacion_empadronada. } ";
+		
+		query = QueryFactory.create(queryString);
+		qexec = QueryExecutionFactory.create(query, model) ;
+		results = qexec.execSelect() ;
+		
+		while (results.hasNext())
+		{
+			QuerySolution binding = results.nextSolution();
+			Resource municipio = (Resource) binding.get("municipio_codigo");
+			Literal poblacion = (Literal) binding.get("poblacion_empadronada");
+			System.out.printf("El municipio " + municipio.getLocalName() + " tiene " + poblacion.getInt() + " mujeres de 0 a 4 a帽os." + "\n");
+		}
+		
+		// Query 3: N煤mero de mujeres de diferentes rangos de edad en municipio con c贸digo 903
+		System.out.println("\nCaso 3: N煤mero de mujeres de diferentes rangos de edad en municipio con c贸digo 903. \n");
+		queryString =
+				"PREFIX ontologia: <" + ontologia + "> " +
+						"SELECT ?Subject ?municipio_codigo ?poblacion_empadronada ?rango_edad " +
+						"WHERE { ?Subject ontologia:hasGender 'Mujer'. " +
+						"?Subject ontologia:hasRange ?rango_edad. " +
+						"?municipio_codigo ontologia:hasAgeGender ?Subject. " +
+						"?municipio_codigo ontologia:hasCode '903'. " +
+						"?Subject ontologia:hasPopulation ?poblacion_empadronada. } ";
+		
+		query = QueryFactory.create(queryString);
+		qexec = QueryExecutionFactory.create(query, model) ;
+		results = qexec.execSelect() ;
+		
+		while (results.hasNext())
+		{
+			QuerySolution binding = results.nextSolution();
+			Resource municipio = (Resource) binding.get("municipio_codigo");
+			Literal rango_de_edad = (Literal) binding.get("rango_edad");
+			Literal poblacion = (Literal) binding.get("poblacion_empadronada");
+			System.out.printf("El municipio " + municipio.getLocalName() + " tiene " + poblacion.getInt() + " personas empadronadas en el " + rango_de_edad + " ." + "\n");
+		}
+		
+		// Query 4: N煤mero de mujeres en municipio con c贸digo 903
+		System.out.println("\nCaso 4: N煤mero total de mujeres empadronadas en municipio con c贸digo 903. \n");
+		queryString =
+				"PREFIX ontologia: <" + ontologia + "> " +
+						"SELECT (SUM(?poblacion_empadronada) AS ?suma) ?Subject ?municipio_codigo ?rango_edad " +
+						"WHERE { ?Subject ontologia:hasGender 'Mujer'. " +
+						"?Subject ontologia:hasRange ?rango_edad. " +
+						"?municipio_codigo ontologia:hasAgeGender ?Subject. " +
+						"?municipio_codigo ontologia:hasCode '903'. " +
+						"?Subject ontologia:hasPopulation ?poblacion_empadronada. } ";
+		
+		query = QueryFactory.create(queryString);
+		qexec = QueryExecutionFactory.create(query, model) ;
+		results = qexec.execSelect() ;
+		
+		while (results.hasNext())
+		{
+			QuerySolution binding = results.nextSolution();
+			Resource municipio = (Resource) binding.get("municipio_codigo");
+			Literal poblacion = (Literal) binding.get("suma");
+			System.out.printf("El municipio " + municipio.getLocalName() + " tiene " + poblacion.getInt() + " personas empadronadas. " + "\n");
 		}
 		
 	}
