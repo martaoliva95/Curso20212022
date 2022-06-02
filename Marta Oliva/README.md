@@ -68,6 +68,54 @@ queryString =
 ```
 Como resultado obtenemos la URI con código de municipio 903 -> http://ejemplo-empadronados.es/CM/municipio/municipio/Tres-Cantos
 
+- Ejemplo 2: Mostrar el número de mujeres de 0 a 4 años en municipio con código 903
+```ruby
+queryString =
+				"PREFIX ontologia: <" + ontologia + "> " +
+						"SELECT ?Subject ?municipio_codigo ?poblacion_empadronada " +
+						"WHERE { ?Subject ontologia:hasGender 'Mujer'. " +
+						"?Subject ontologia:hasRange 'municipio/De-0-a-4-años'. " +
+						"?municipio_codigo ontologia:hasAgeGender ?Subject. " +
+						"?municipio_codigo ontologia:hasCode '903'. " +
+						"?Subject ontologia:hasPopulation ?poblacion_empadronada. } ";
+```
+Como resultado obtenemos -> El municipio Tres-Cantos tiene 1217 mujeres de 0 a 4 años.
+
+- Ejemplo 3: Mostrar el número de mujeres de diferentes rangos de edad en municipio con código 903
+```ruby
+queryString =
+				"PREFIX ontologia: <" + ontologia + "> " +
+						"SELECT ?Subject ?municipio_codigo ?poblacion_empadronada ?rango_edad " +
+						"WHERE { ?Subject ontologia:hasGender 'Mujer'. " +
+						"?Subject ontologia:hasRange ?rango_edad. " +
+						"?municipio_codigo ontologia:hasAgeGender ?Subject. " +
+						"?municipio_codigo ontologia:hasCode '903'. " +
+						"?Subject ontologia:hasPopulation ?poblacion_empadronada. } ";
+```
+
+Como resultado obtenemos --> El municipio Tres-Cantos tiene 1217 personas empadronadas en el municipio/De-0-a-4-años .
+El municipio Tres-Cantos tiene 2177 personas empadronadas en el municipio/De-50-a-54-años .
+El municipio Tres-Cantos tiene 1500 personas empadronadas en el municipio/De-15-a-19-años .
+El municipio Tres-Cantos tiene 1857 personas empadronadas en el municipio/De-55-a-59-años .
+El municipio Tres-Cantos tiene 167 personas empadronadas en el municipio/De-90-a-94-años .
+El municipio Tres-Cantos tiene 2032 personas empadronadas en el municipio/De-45-a-49-años .
+El municipio Tres-Cantos tiene 1546 personas empadronadas en el municipio/De-30-a-34-años .
+El municipio Tres-Cantos tiene 287 personas empadronadas en el municipio/De-85-a-89-años .
+El municipio Tres-Cantos tiene 628 personas empadronadas en el municipio/De-70-a-74-años .
+El municipio Tres-Cantos tiene 1400 personas empadronadas en el municipio/De-25-a-29-años .
+El municipio Tres-Cantos tiene 1390 personas empadronadas en el municipio/De-10-a-14-años .
+El municipio Tres-Cantos tiene 6 personas empadronadas en el municipio/De-100-y-más-años .
+El municipio Tres-Cantos tiene 993 personas empadronadas en el municipio/De-65-a-69-años .
+El municipio Tres-Cantos tiene 1903 personas empadronadas en el municipio/De-40-a-44-años .
+El municipio Tres-Cantos tiene 1229 personas empadronadas en el municipio/De-5-a-9-años .
+El municipio Tres-Cantos tiene 54 personas empadronadas en el municipio/De-95-a-99-años .
+El municipio Tres-Cantos tiene 370 personas empadronadas en el municipio/De-80-a-84-años .
+El municipio Tres-Cantos tiene 1425 personas empadronadas en el municipio/De-20-a-24-años .
+El municipio Tres-Cantos tiene 1752 personas empadronadas en el municipio/De-35-a-39-años .
+El municipio Tres-Cantos tiene 357 personas empadronadas en el municipio/De-75-a-79-años .
+El municipio Tres-Cantos tiene 1407 personas empadronadas en el municipio/De-60-a-64-años .
+```
+
 ## 4. Conclusiones
 En la realización de este proyecto me he dado cuenta de la utilidad que tiene la Web Semántica y los datos enlazados. La utilización de datos enlazados nos permite una mayor precisión en la búsqueda de datos lo que equivale a mayor rapidez y calidad en éstos. En mi opinión, es un campo bastante interesante pero que requiere de conocimiento y experiencia para llegar a analizar y generar datos más complejos. Concretamente, en mi dataset me habría gustado poder realizar más pruebas y haberlo enfocado de diferentes maneras, pero la falta de experiencia y tiempo me lo han impedido. Aún así, me ha gustado la asignatura y espero poder seguir aprendiendo. 
 
